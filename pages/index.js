@@ -1,24 +1,19 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
 
-import { Dark, Light } from '../components/global-styles/global-styles';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from '../components/template-styles/template-styles';
 import Layout from '../components/layout/layout';
 import GlobalData from '../components/global-data/global-data';
+import CountryData from '../components/country-data/country-data';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { getGlobalData } from '../redux/covids/covid-actions';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
-  const darkTheme = useSelector((state) => state.theme.darkTheme);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getGlobalData());
-  }, [dispatch]);
+  const themes = useSelector((state) => state.theme.themes);
 
   return (
-    <>
-      {darkTheme ? <Dark /> : <Light />}
+    <ThemeProvider theme={themes}>
+      <GlobalStyles />
       <Head>
         <title>Corona Today</title>
         <link rel="icon" href="/favicon.ico" />
@@ -27,9 +22,10 @@ const Home = () => {
       <Layout>
         <main>
           <GlobalData />
+          <CountryData />
         </main>
-      </Layout>
-    </>
+      </Layout>   
+    </ThemeProvider>
   );
 };
 

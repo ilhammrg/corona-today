@@ -17,42 +17,41 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    background-color: ${props => props.theme.bg1};
+    color: ${props => props.theme.font1};
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-y: scroll;
     overflow-x: auto;
-    -webkit-transition: background-color 250ms linear;
-    -moz-transition: background-color 250ms linear;
-    -o-transition: background-color 250ms linear;
-    -ms-transition: background-color 250ms linear;
-    transition: background-color 250ms linear;
+    -webkit-transition: background-color 150ms linear;
+    -moz-transition: background-color 150ms linear;
+    -o-transition: background-color 150ms linear;
+    -ms-transition: background-color 150ms linear;
+    transition: background-color 150ms linear;
   }
 
   #__next {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     display: grid;
     grid-template-rows: auto 1fr auto;
+  }
 
-    @media screen and (min-width: 1024px) {
-      width: 1200px;
-      margin: auto;
+  .MuiPaper-root {
+    background-color: ${props => props.theme.bg2} !important;
+  }
+
+  .MuiMenu-list {
+    background-color: ${props => props.theme.bg2};
+    color: ${props => props.theme.font1};
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 24rem !important;
+
+    .MuiListItem-root {
+      font-family: 'Inter', sans-serif !important;
     }
-  }
-`;
-
-export const Light = createGlobalStyle`
-  body {
-    background-color: #f5f8ff;
-    color: #2a2344;
-  }
-`;
-
-export const Dark = createGlobalStyle`
-  body {
-    background-color: #201f21;
-    color: #dfdce4;
   }
 `;
 

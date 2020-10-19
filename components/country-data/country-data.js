@@ -1,27 +1,28 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { getGlobalData } from '../../redux/covids/covid-actions';
+import { getCountryList } from '../../redux/covids/covid-actions';
 
-import { DataContainer, Title, LastUpdated } from './global-data.styles';
+import { DataContainer, LastUpdated } from '../global-data/global-data.styles';
 import CardBig from '../card-big/card-big';
+import CountryDropdown from '../country-dropdown/country-dropdown';
 import ConfirmedLogo from '../confirmed-logo/confirmed-logo';
 import RecoveredLogo from '../recovered-logo/recovered-logo';
 import DeathLogo from '../death-logo/death-logo';
 
-const GlobalData = () => {
+const CountryData = () => {
   const dispatch = useDispatch();
-  const globalDataSummary = useSelector((state) => state.covids.globalSummary);
-  const { totalConfirmed, totalRecovered, totalDeaths, lastUpdate } = globalDataSummary;
-  
+  const countryDataSummary = useSelector((state) => state.covids.countrySummary);
+  const { totalConfirmed, totalRecovered, totalDeaths, lastUpdate } = countryDataSummary;
+
   useEffect(() => {
-    dispatch(getGlobalData());
+    dispatch(getCountryList());
   }, [dispatch]);
 
   return (
     <DataContainer>
-      <Title>Global</Title>
+      <CountryDropdown />
       {
         lastUpdate 
           ? <LastUpdated>Updated about <Moment fromNow>{lastUpdate}</Moment></LastUpdated> 
@@ -32,6 +33,6 @@ const GlobalData = () => {
       <CardBig label='Total Deaths' cases={totalDeaths} logoBgColor='rgba(234, 84, 85, 0.2)' logoColor='red' logo={<DeathLogo />} />
     </DataContainer>
   );
-};
+}
 
-export default GlobalData;
+export default CountryData;

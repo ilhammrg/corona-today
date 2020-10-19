@@ -7,14 +7,22 @@ import Select from '@material-ui/core/Select';
 
 export const FormControlStyled = styled(FormControl)`
   width: 200px;
+  margin: 1rem 0 !important;
 
-  /* .MuiInput-underline:after {
-    border-bottom: 2px solid red;
-  } */
+  label, .MuiSelect-select, .MuiSelect-icon, .MuiFormLabel-root.Mui-focused {
+    color: ${props => props.theme.font1};
+    font-family: 'Inter', sans-serif !important;
+  }
 
-  /* .MuiFormLabel-root.Mui-focused {
-    color: red;
-  } */
+  .MuiInput-underline {
+    border-bottom: 1px solid ${props => props.theme.font1};
+  }
+
+  @media screen and (min-width: 768px) {
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+    margin: 0.6rem auto !important;
+  }
 `;
 
 export const InputLabelStyled = styled(InputLabel)`

@@ -1,11 +1,18 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { getCountryData } from '../../redux/covids/covid-actions';
+
 import { FormControlStyled, InputLabelStyled, SelectStyled, MenuItemStyled } from './country-dropdown-styles';
 
 const CountryDropdown = () => {
-  const [country, setAge] = React.useState('');
+  const countryList = useSelector((state) => state.covids.countryList);
+  const dispatch = useDispatch();
+
+  const [country, setCountry] = React.useState('');
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCountry(event.target.value);
+    dispatch(getCountryData(event.target.value));
   };
 
   const handleClose = () => {
@@ -18,7 +25,7 @@ const CountryDropdown = () => {
 
   return (
     <FormControlStyled>
-      <InputLabelStyled id="demo-controlled-open-select-label">Country</InputLabelStyled>
+      <InputLabelStyled id="demo-controlled-open-select-label">Select Country</InputLabelStyled>
       <SelectStyled
         labelId="demo-controlled-open-select-label"
         id="demo-controlled-open-select"
@@ -28,9 +35,11 @@ const CountryDropdown = () => {
         value={country}
         onChange={handleChange}
       >
-        <MenuItemStyled value='Indonesia'>Indonesia</MenuItemStyled>
-        <MenuItemStyled value='Malaysia'>Malaysia</MenuItemStyled>
-        <MenuItemStyled value='Singapore'>Singapore</MenuItemStyled>
+        {
+          countryList
+            ? countryList.map((country, index) => <MenuItemStyled value={country.name} key={index}>{country.name}</MenuItemStyled>)
+            : <MenuItemStyled value='Country'>Loading...</MenuItemStyled>
+        }
       </SelectStyled>
     </FormControlStyled>
   );

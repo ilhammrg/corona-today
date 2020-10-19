@@ -3,12 +3,24 @@ import Button from '@material-ui/core/Button';
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: 10rem;
+  height: 7.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3rem 0;
+  margin-top: 2.5rem;
+
+  p {
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 export const ToggleThemeButton = styled(Button)`
@@ -18,7 +30,7 @@ export const ToggleThemeButton = styled(Button)`
   position: fixed !important;
   top: 0.7rem !important;
   right: 0.7rem !important;
-  /* background-color: #838383 !important; */
+  z-index: 99 !important;
   background-color: #7a88d2 !important;
   padding: 0 !important;
   border-radius: 100% !important;
@@ -33,10 +45,5 @@ export const ToggleThemeButton = styled(Button)`
 export const Title = styled.h1`
   font-size: 2.5rem;
   font-weight: 700;
-`;
-
-export const AppName = styled.h2`
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: 2.5rem;
+  color: ${props => props.theme.font1};
 `;
