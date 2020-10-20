@@ -23,22 +23,38 @@ export const HeaderContainer = styled.header`
   }
 `;
 
-export const ToggleThemeButton = styled(Button)`
+export const MenuList = styled.ul`
+  position: fixed;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 99 !important;
+  background-color: transparent;
+  width: fit-content;
+
+  li {
+    list-style-type: none;
+    margin-bottom: 0.7rem;
+  }
+`;
+
+export const CustomButton = styled(Button)`
   min-width: unset !important;
   width: 3rem !important;
   height: 3rem !important;
-  position: fixed !important;
-  top: 0.7rem !important;
-  right: 0.7rem !important;
   z-index: 99 !important;
   background-color: #7a88d2 !important;
   padding: 0 !important;
   border-radius: 100% !important;
+  overflow: hidden;
 
   svg {
     height: 1.8rem;
     width: 1.8rem;
     fill: #ffe05d;
+  }
+
+  img {
+    height: 80px;
   }
 `;
 

@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 
-import { getGlobalData } from '../../redux/covids/covid-actions';
+import { getGlobalData } from '../../api/api';
 
 import { DataContainer, Title, LastUpdated } from './global-data.styles';
 import CardBig from '../card-big/card-big';
@@ -11,13 +10,23 @@ import RecoveredLogo from '../recovered-logo/recovered-logo';
 import DeathLogo from '../death-logo/death-logo';
 
 const GlobalData = () => {
-  const dispatch = useDispatch();
-  const globalDataSummary = useSelector((state) => state.covids.globalSummary);
-  const { totalConfirmed, totalRecovered, totalDeaths, lastUpdate } = globalDataSummary;
+  const [globalSummary, setGlobal] = useState({ totalConfirmed: 0, totalRecovered: 0, totalDeaths: 0, lastUpdate: '' });
+  const { totalConfirmed, totalRecovered, totalDeaths, lastUpdate } = globalSummary;
+
+  const fetchData = async () => {
+    const globalData = await getGlobalData();
+    const { confirmed, recovered, deaths, lastUpdate} = globalData;
+    setGlobal({
+      totalConfirmed: confirmed.value,
+      totalRecovered: recovered.value,
+      totalDeaths: deaths.value,
+      lastUpdate: lastUpdate,
+    });
+  };
   
-  useEffect(() => {
-    dispatch(getGlobalData());
-  }, [dispatch]);
+  useEffect( () => {
+    fetchData();
+  }, []);
 
   return (
     <DataContainer>

@@ -1,4 +1,9 @@
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { getCountryList } from '../api/api';
+import { getCountryListSuccess } from '../redux/covids/covid-actions';
 
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '../components/template-styles/template-styles';
@@ -8,16 +13,19 @@ import CountryData from '../components/country-data/country-data';
 
 import { useSelector } from 'react-redux';
 
-const Home = () => {
+const Home = ({ countries }) => {
   const themes = useSelector((state) => state.theme.themes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCountryListSuccess(countries));
+  }, []);
 
   return (
     <ThemeProvider theme={themes}>
       <GlobalStyles />
       <Head>
-        <title>Corona Today</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+        <title>Summary | Corona Today</title>
       </Head>
       <Layout>
         <main>
@@ -27,6 +35,16 @@ const Home = () => {
       </Layout>   
     </ThemeProvider>
   );
+};
+
+export const getStaticProps = async () => {
+  const countries = await getCountryList();
+  
+  return {
+    props: {
+      countries,
+    }
+  };
 };
 
 export default Home;

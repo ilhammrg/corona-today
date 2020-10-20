@@ -29,8 +29,3 @@ export const FooterContainer = styled.footer`
     }
   }
 `;
-
-export const FlagImage = styled.img`
-  margin: 0 3px;
-  width: 1.3rem;
-`;

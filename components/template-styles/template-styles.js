@@ -53,6 +53,38 @@ export const GlobalStyles = createGlobalStyle`
       font-family: 'Inter', sans-serif !important;
     }
   }
+
+  .MuiIconButton-root {
+    color: ${props => props.theme.font1} !important;
+
+    &.Mui-disabled {
+      color: ${props => props.theme.font3} !important;
+    }
+  }
+
+  .MuiTableContainer-root {
+    height: 30rem !important;
+    overflow-y: scroll;
+    border: ${props => props.theme.border} !important;
+    border-radius: 0.75rem !important;
+    background-color: ${props => props.theme.bg2} !important;
+  }
+
+  .MuiTableCell-root {
+    border-bottom: ${props => props.theme.border2} !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  .MuiTableCell-body, .MuiTableCell-head {
+    color: ${props => props.theme.font1} !important;
+  }
+
+`;
+
+export const SectionTitle = styled.h2`
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
 `;
 
 export const TextNormal = styled.p`

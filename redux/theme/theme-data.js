@@ -3,7 +3,9 @@ export const LIGHT_THEME = {
   bg2: '#fefefe',
   font1: '#2a2344',
   font2: '#858585',
+  font3: '#ccc',
   border: '1px solid #ddd',
+  border2: 'qpx solid #ccc',
 };
 
 export const DARK_THEME = {
@@ -11,5 +13,7 @@ export const DARK_THEME = {
   bg2: '#353535',
   font1: '#dfdce4',
   font2: '#858585',
-  border: '1px solid #222'
+  font3: '#656565',
+  border: '1px solid #222',
+  border2: '1px solid #656565',
 };

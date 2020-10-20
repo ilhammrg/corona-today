@@ -1,8 +1,5 @@
-import { useEffect } from 'react';
 import Moment from 'react-moment';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { getCountryList } from '../../redux/covids/covid-actions';
+import { useSelector } from 'react-redux';
 
 import { DataContainer, LastUpdated } from '../global-data/global-data.styles';
 import CardBig from '../card-big/card-big';
@@ -12,13 +9,8 @@ import RecoveredLogo from '../recovered-logo/recovered-logo';
 import DeathLogo from '../death-logo/death-logo';
 
 const CountryData = () => {
-  const dispatch = useDispatch();
   const countryDataSummary = useSelector((state) => state.covids.countrySummary);
   const { totalConfirmed, totalRecovered, totalDeaths, lastUpdate } = countryDataSummary;
-
-  useEffect(() => {
-    dispatch(getCountryList());
-  }, [dispatch]);
 
   return (
     <DataContainer>
