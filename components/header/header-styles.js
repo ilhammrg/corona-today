@@ -2,12 +2,11 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: 7.5rem;
+  height: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2.5rem;
 
   p {
     text-align: center;
@@ -15,10 +14,6 @@ export const HeaderContainer = styled.header`
 
   a {
     text-decoration: none;
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-top: 0;
   }
 `;
 

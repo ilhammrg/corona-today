@@ -15,7 +15,7 @@ const Custom404 = () => {
     <ThemeProvider theme={themes}>
       <GlobalStyles />
       <Head>
-        <title>Oops :( | Corona Today</title>
+        <title>Oops | Corona Today</title>
       </Head>
       <Layout>
         <main>
