@@ -9,11 +9,22 @@ export const FooterContainer = styled.footer`
   justify-content: space-between;
 
   p {
+    color: ${props => props.theme.font2};
+  }
+
+  #footer-source {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    color: #858585;
+
+    a {
+      margin-left: 5px;
+    }
+  }
+
+  #footer-accent {
     margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
 
     svg {
       margin: 0 3px;
@@ -21,11 +32,29 @@ export const FooterContainer = styled.footer`
     }
   }
 
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
+  #footer-about {
+    margin-bottom: 0.4rem;
+  }
 
-    p {
+  @media screen and (min-width: 768px) {
+    display: grid;
+
+    #footer-accent {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
       margin-bottom: 0;
     }
+
+    #footer-about {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      margin-bottom: 0;
+    }
+
+    #footer-source {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
   }
 `;

@@ -30,15 +30,15 @@ const GlobalData = () => {
 
   return (
     <DataContainer>
-      <Title>Global</Title>
+      <Title>Global COVID-19 Overviews</Title>
       {
         lastUpdate 
           ? <LastUpdated>Updated about <Moment fromNow>{lastUpdate}</Moment></LastUpdated> 
           : null
       }
-      <CardBig label='Total Confirmed' cases={totalConfirmed} logoBgColor='rgb(255, 165, 0, 0.2)' logoColor='orange' logo={<ConfirmedLogo />} />
-      <CardBig label='Total Recovered' cases={totalRecovered} logoBgColor='rgb(98, 210, 162, 0.2)' logoColor='green' logo={<RecoveredLogo  />} />
-      <CardBig label='Total Deaths' cases={totalDeaths} logoBgColor='rgba(234, 84, 85, 0.2)' logoColor='red' logo={<DeathLogo />} />
+      <CardBig label='Total Confirmed' cases={totalConfirmed} logoBgColor='rgb(255, 165, 0, 0.2)' logoColor='#ff9a3c' logo={<ConfirmedLogo />} />
+      <CardBig label='Recovered' cases={totalRecovered} logoBgColor='rgb(98, 210, 162, 0.2)' logoColor='#4ecca3' logo={<RecoveredLogo  />} />
+      <CardBig label='Deaths' cases={totalDeaths} logoBgColor='rgba(234, 84, 85, 0.2)' logoColor='#ea5455' logo={<DeathLogo />} />
     </DataContainer>
   );
 };

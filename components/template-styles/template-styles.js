@@ -36,6 +36,13 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     display: grid;
     grid-template-rows: auto 1fr auto;
+
+    @media screen and (min-width: 1024px) {
+      #content {
+        width: 900px;
+        margin: 0 auto;
+      }
+    }
   }
 
   .MuiPaper-root {

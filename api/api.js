@@ -4,6 +4,12 @@ export const getGlobalData = async () => {
   return globalData;
 };
 
+export const getGlobalDaily = async () => {
+  const response = await fetch('https://covid19.mathdro.id/api/daily');
+  const globalDaily = await response.json();
+  return globalDaily;
+};
+
 export const getProvinces = async () => {
   const response = await fetch('https://indonesia-covid-19.mathdro.id/api/provinsi');
   const provinces = (await response.json()).data;

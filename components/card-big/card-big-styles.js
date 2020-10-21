@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.article`
   width: 100%;
-  height: 14rem;
+  height: 12rem;
   background-color: ${props => props.theme.bg2};
   border: ${props => props.theme.border};
   border-radius: 0.75rem;
@@ -15,7 +15,6 @@ export const CardContainer = styled.article`
 
   @media screen and (min-width: 768px) {
     width: 16rem;
-    height: 16rem;
     margin: 0.6rem;
   }
 `;
@@ -26,7 +25,7 @@ export const LogoWrapper = styled.div`
   justify-content: center;
   width: 3rem;
   height: 3rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   padding: 5px;
   border-radius: 100%;
   background-color: ${props => props.logoBgColor};

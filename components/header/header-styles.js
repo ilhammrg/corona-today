@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -37,20 +36,33 @@ export const MenuList = styled.ul`
   }
 `;
 
-export const CustomButton = styled(Button)`
-  min-width: unset !important;
-  width: 3rem !important;
-  height: 3rem !important;
-  z-index: 99 !important;
-  background-color: #7a88d2 !important;
-  padding: 0 !important;
-  border-radius: 100% !important;
+export const CircleButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: #7a88d2;
+  border-radius: 100%;
+  padding: 0;
   overflow: hidden;
+  border: none;
+  outline: none;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 
   svg {
     height: 1.8rem;
     width: 1.8rem;
-    fill: #ffe05d;
+    fill: #e7e4f5;
   }
 
   img {

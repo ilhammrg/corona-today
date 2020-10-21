@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import { useSelector } from 'react-redux';
 
-import { getIndonesiaSummary, getProvinces, getDailyCase } from '../api/api';
+import { getDailyCase } from '../api/api';
 
 import Layout from '../components/layout/layout';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '../components/template-styles/template-styles';
-import Summary from '../components/summary/summary';
-import Province from '../components/province/province';
+import IndoGlobal from '../components/indo-global-data/indo-global';
+import IndoDaily from '../components/indo-daily-trend/indo-daily';
+import IndoProvince from '../components/indo-province/indo-province';
 
-const Indonesia = ({ summary, provinces, dailyCase }) => {
+const Indonesia = ({ dailyCase }) => {
   const themes = useSelector((state) => state.theme.themes);
-  const last30DaysCase = dailyCase.slice(Math.max(dailyCase.length - 30, 0));
 
   return (
     <ThemeProvider theme={themes}>
@@ -20,9 +20,10 @@ const Indonesia = ({ summary, provinces, dailyCase }) => {
         <title>Indonesia | Corona Today</title>
       </Head>
       <Layout>
-        <main>
-          <Summary summary={summary} dailyCase={last30DaysCase} />
-          <Province provinces={provinces} />
+        <main id='content'>
+          <IndoGlobal dailyCase={dailyCase} />
+          <IndoDaily dailyCase={dailyCase} />
+          <IndoProvince />
         </main>
       </Layout>
     </ThemeProvider>
@@ -30,14 +31,10 @@ const Indonesia = ({ summary, provinces, dailyCase }) => {
 };
 
 export const getStaticProps = async () => {
-  const provinces = await getProvinces();
-  const summary = await getIndonesiaSummary();
   const dailyCase = await getDailyCase();
 
   return {
     props: {
-      summary,
-      provinces,
       dailyCase,
     }
   };

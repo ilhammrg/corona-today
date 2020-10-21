@@ -19,26 +19,16 @@ export const DataContainer = styled.section`
       width: 100%;
     }
 
-    & article:nth-child(2) {
-      grid-row: 2;
-      grid-column: 1 / 2;
-    }
-
-    & article:nth-child(3) {
-      grid-row: 2;
-      grid-column: 2 / 3;
-    }
-
-    & article:nth-child(4) {
-      grid-row: 2;
-      grid-column: 3 / 4;
+    #province-chart {
+      grid-row: 3;
     }
   }
 `;
 
 export const Title = styled.h2`
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
+  text-align: center;
 
   @media screen and (min-width: 768px) {
     grid-row: 1 / 2;
